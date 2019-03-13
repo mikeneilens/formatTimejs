@@ -17,7 +17,7 @@ function formatIntoText(aTime) {
     }
 }
 
-function formatTime(timeInSeconds) {
+function calcTime(timeInSeconds) {
 
     let timeRemaining = timeInSeconds;
 
@@ -28,11 +28,16 @@ function formatTime(timeInSeconds) {
         return {unit:newUnit, value:newValue};
     }
 
+    return unitTimes.map(calcTimePerUnit);
+}
+
+function formatTime(timeInSeconds) {
+
     function isNonZeroTime(unitTime) {
         return unitTime.value > 0;
     }
 
-    const calcualtedUnitTimes = unitTimes.map(calcTimePerUnit).filter(isNonZeroTime);
+    const calcualtedUnitTimes = calcTime(timeInSeconds).filter(isNonZeroTime);
     return formatIntoText(calcualtedUnitTimes);
 }
 
