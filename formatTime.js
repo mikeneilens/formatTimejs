@@ -1,4 +1,3 @@
-//Javascript enum
 const Unit = Object.freeze({
   second: { secondsPerUnit:1, maxValue:60, text:"second"},
   minute: { secondsPerUnit:60, maxValue:60, text:"minute"},
@@ -42,20 +41,20 @@ function calcTime(timeInSeconds) {
   return units.map(calcTimePerUnit);
 }
 
-function formatIntoText(aTime) {
-    switch (aTime.length) {
+function formatIntoText(unitTimes) {
+    switch (unitTimes.length) {
         case 0: 
           return "none"; break;
         case 1: 
-          return `${aTime[0].text()}`;
+          return `${unitTimes[0].text()}`;
         case 2: 
-          return `${aTime[0].text()} and ${aTime[1].text()}`;
+          return `${unitTimes[0].text()} and ${unitTimes[1].text()}`;
         case 3: 
-          return `${aTime[0].text()}, ${aTime[1].text()} and ${aTime[2].text()}`;
+          return `${unitTimes[0].text()}, ${unitTimes[1].text()} and ${unitTimes[2].text()}`;
         case 4: 
-          return `${aTime[0].text()}, ${aTime[1].text()}, ${aTime[2].text()}, and ${aTime[3].text()}`;
+          return `${unitTimes[0].text()}, ${unitTimes[1].text()}, ${unitTimes[2].text()} and ${unitTimes[3].text()}`;
         case 5: 
-          return `${aTime[0].text()}, ${aTime[1].text()}, ${aTime[2].text()}, ${aTime[3].text()} and ${aTime[4].text()}`; 
+          return `${unitTimes[0].text()}, ${unitTimes[1].text()}, ${unitTimes[2].text()}, ${unitTimes[3].text()} and ${unitTimes[4].text()}`; 
     }
 }
 
